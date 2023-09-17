@@ -22,7 +22,6 @@ String[] StringsArr()
 
 void ArrayPrint(String[] incomingArr)
 {
-    Console.WriteLine("Result string array: ");
     for (int i = 0; i < incomingArr.Length; i++)
     {
             Console.Write($"{incomingArr[i]} ");
@@ -30,4 +29,29 @@ void ArrayPrint(String[] incomingArr)
     Console.WriteLine("");
 }
 
-ArrayPrint(StringsArr());
+String[] Under3CharsArr(String[] incomingArr)
+{
+    int n = 0;
+    for (int i = 0;i < incomingArr.Length;i++)
+    {
+        if (incomingArr[i].Length < 4) n += 1;
+    }
+    String[] resultArr = new String[n];
+    n = 0;
+    for (int i = 0; i < incomingArr.Length; i++)
+    {
+        if (incomingArr[i].Length < 4)
+        {
+            resultArr[n] = incomingArr[i];
+            n++;
+        }
+    }
+    return resultArr;
+}
+
+String[] arr = StringsArr();
+Console.WriteLine("Source array of strings:");
+ArrayPrint(arr);
+Console.WriteLine();
+Console.WriteLine("Array of under 3 chars strings:");
+ArrayPrint(Under3CharsArr(arr));
